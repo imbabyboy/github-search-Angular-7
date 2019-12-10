@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+    <div class="col-md-6 search-container">
+      <h3>Поиск репозиториев</h3>
+      <div class="input-group" [formGroup]="gitHubSearchForm">
+        <input type="text" (ngModelChange)="onSearchChange()" class="form-control" formControlName="search" id="search" placeholder="Поиск...">
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th *ngIf=false>Id</th>
+            <th>Имя</th>
+            <th>Звезды</th>
+          </tr>
+          </thead>
+          <tbody *ngIf=!isSearching>
+            <tr *ngFor="let repo of repositories">
+              <td *ngIf=false>{{repo.id}}</td>
+              <td>{{repo.name}}</td>
+              <td>{{repo.stargazers_count}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 *ngIf="gitHubSearchForm.valid && repositories.length === 0 && !isSearching">Репозитории с таким именем не найдены.</h3>
+      <h3 *ngIf=isSearching>Поиск...</h3>
+    </div>
+  </div>
+  

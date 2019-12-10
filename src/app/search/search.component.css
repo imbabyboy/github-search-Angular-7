@@ -1,0 +1,9 @@
+.error{
+  color: #FF0000;
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  background-color: gainsboro;
+  align-items: center;
+}
